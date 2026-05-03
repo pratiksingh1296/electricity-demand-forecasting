@@ -1,6 +1,10 @@
 # Electricity Demand Forecasting
 
 Predicting hourly electricity demand using time-series feature engineering and machine learning models.
+---
+
+## 🚀 Live Demo
+👉 [Try the Electricity Demand Forecasting](https://grid-demand-forecast.streamlit.app/)
 
 ---
 
@@ -81,13 +85,13 @@ The following models were evaluated:
 ## Key Visualizations
 
 ### Model Comparison
-![Model Comparison](reports/figures/model_comparison_mae.png)
+![Model Comparison](reports/plots/model_comparison_mae.png)
 
 ### Final Predictions (Actual vs Models)
-![Predictions](reports/figures/final_predictions_comparison.png)
+![Predictions](reports/plots/final_predictions_comparison.png)
 
 ### Feature Importance (XGBoost)
-![Feature Importance](reports/figures/feature_importance_xgb.png)
+![Feature Importance](reports/plots/feature_importance_xgb.png)
 
 ---
 
