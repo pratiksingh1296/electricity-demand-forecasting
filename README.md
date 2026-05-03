@@ -105,6 +105,7 @@ The following models were evaluated:
 
   * Random Forest reduces overfitting
   * XGBoost captures complex interactions and performs best
+* Deployed with a 5-tier demand alert system (Normal → Critical) based on hourly percentile thresholds, translating predictions into grid operator actions.
 
 ---
 
@@ -117,11 +118,10 @@ This project demonstrates that combining **domain-aware feature engineering with
 ---
 
 ## Future Improvements
-
-* Use **weather forecasts** instead of historical temperature
-* Implement **rolling cross-validation**
-* Extend to **multi-step forecasting**
-* Add **uncertainty estimation (prediction intervals)**
+* Integrate real-time weather forecast API for live predictions
+* Extend to multi-step forecasting (next 24 hours)
+* Implement rolling cross-validation for temporal robustness
+* Incorporate additional weather variables (humidity, wind speed)
 
 ---
 
@@ -169,12 +169,12 @@ pip install -r requirements.txt
 ---
 
 ## Tech Stack
-
 * Python
 * Pandas, NumPy
 * Scikit-learn
 * XGBoost
 * Matplotlib
+* Streamlit
 
 ---
 
@@ -184,69 +184,4 @@ Pratik Singh
 
 Aspiring Data Scientist with a focus on machine learning, time-series forecasting, and building end-to-end data projects.
 
-
-## 📊 Dataset
-
-* **Source:**
-
-  * Electricity Demand: EIA Grid Monitor (Texas region)
-  * Weather Data: Open-Meteo API
-
-* **Granularity:** Hourly
-
-* **Time Range:** 2018 – 2023
-
 ---
-
-### Electricity Demand Data
-
-The electricity demand data is sourced from the EIA Grid Monitor for the Texas region and contains:
-
-* Actual hourly demand (MW)
-* Forecasted demand (MW)
-* Timestamp (local time)
-
-Due to file size constraints, the raw demand dataset is **not included** in this repository.
-
-To reproduce the project:
-
-1. Download the data from: https://www.eia.gov/electricity/gridmonitor/
-2. Select the Texas region and export hourly data
-3. Place the file in: `data/raw/`
-
----
-
-### Weather Data
-
-Weather data is obtained using the Open-Meteo API and is included in this repository.
-
-It contains:
-
-* Hourly temperature (`temperature_2m`)
-* Timestamp aligned with demand data
-
-This data is used to capture the impact of weather on electricity demand.
-
----
-
-### Data Processing
-
-* Timestamps are aligned and merged between demand and weather datasets
-* Missing values are handled via interpolation
-* Duplicate timestamps (e.g., due to DST) are resolved
-* Final dataset is stored in `data/processed/`
-
----
-
-### Target Variable
-
-* **`demand_MW`** → Hourly electricity demand in megawatts
-
----
-
-### Key Challenges
-
-* Strong daily and weekly seasonality
-* Weather-driven variability
-* Time alignment across multiple data sources
-* Handling missing and duplicate timestamps
